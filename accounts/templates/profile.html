@@ -2,4 +2,8 @@
 {% block content %}
     <h2>Success!</h2>
     <p>You are logged in as {{ user.email }}</p>
+    <script type="text/javascript">
+        $('#a_logout').show();
+        $('#a_login').hide();
+    </script>
 {% endblock %}
