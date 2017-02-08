@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Stripe environment variables
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_jE4NdCHG1oQ9l59OcQOvvxVm')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_wYj2So5ifdPJs7EPuoaJM4uO')
+
 # Application definition
 AUTH_USER_MODEL = 'accounts.User'
 

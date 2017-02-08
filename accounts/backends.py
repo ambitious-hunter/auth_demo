@@ -1,5 +1,6 @@
 from models import User
 
+
 class EmailAuth(object):
     """
     Get and instance of User using the supplied email and check it's password

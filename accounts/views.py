@@ -4,6 +4,7 @@ from accounts.forms import UserRegistrationForm, UserLoginForm
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 
 def register(request):
@@ -42,19 +43,22 @@ def login(request):
         if form.is_valid():
             user = auth.authenticate(email=request.POST.get('email'),
                                      password=request.POST.get('password'))
-
             if user is not None:
                 auth.login(request, user)
                 messages.error(request, "You have successfully logged in")
+                # if user.last_login != '':
+                    # messages.error(request, 'You last loggin was: ' + user.last_login)
                 return redirect(reverse('profile'))
             else:
                 form.add_error(None, "your email or password were not recoginsed")
 
+            # user.last_login = timezone.now()
+            # user.save(update_fields=['last_login'])
     else:
         form = UserLoginForm()
 
     args = {'form': form}
-    args.update(csrf(request))
+    user.save(update_fields=['last_login'])
     return render(request, 'login.html', args)
 
 
