@@ -1,0 +1,4 @@
+Django==1.10.5
+django-forms-bootstrap==3.0.1
+requests==2.13.0
+stripe==1.46.0
