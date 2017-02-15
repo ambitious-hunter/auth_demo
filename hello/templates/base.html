@@ -15,18 +15,23 @@
 </head>
 <body>
 <div class="container">
-   <div class="masthead">
-       <ul class="nav nav-pills pull-right">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">About</a></li>
-           <li><a href="#">Contact</a></li>
-           <li><a href="{% url 'register' %}">Register</a></li>
-           <li><a id="a_login" href="{% url 'login' %}">Log In</a></li>
-           <li><a id="a_logout" href="{% url 'logout' %}">Log Out</a></li>
-       </ul>
-       <h1><span class="fui-settings-16 muted">We are social</span></h1>
-   </div>
-   <hr>
+    <div class="masthead">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about/">About</a></li>
+                <li><a href="#">Contact</a></li>
+                {% if not user.is_anonymous %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+
+        <h1><span class="fui-settings-16 muted">We are social</span></h1>
+    </div>
+    <hr>
     {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
@@ -36,14 +41,14 @@
             </div>
         </div>
     {% endif %}
-   <div class="container">
-       {% block content %}
-       {% endblock %}
-   </div>
-   <hr>
-   <div class="footer">
-       <p>Made By Bootcampers and Django </p>
-   </div>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <hr>
+    <div class="footer">
+        <p>Made By Bootcampers and Django </p>
+    </div>
 </div>
 </body>
 </html>
