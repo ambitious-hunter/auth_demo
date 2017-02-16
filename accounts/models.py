@@ -4,8 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 class AccountUserManager(UserManager):
-    def _create_user(self, username, email, password,
-                     is_staff, is_superuser, **extra_fields):
+    def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields):
         """
        Creates and saves a User with the given username, email and password.
        """
@@ -32,9 +31,3 @@ class User(AbstractUser):
     stripe_id = models.CharField(max_length=40, default='')
     subscription_end = models.DateTimeField(default=timezone.now)
     objects = AccountUserManager()
-
-
-class Product(models.Model):
-    name = models.CharField(max_length=254,default='')
-    description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
