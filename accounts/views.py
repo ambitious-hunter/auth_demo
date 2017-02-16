@@ -1,4 +1,4 @@
-import arrow
+# import arrow
 import datetime
 import stripe
 import json
@@ -9,9 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-
+from django.views.decorators.csrf import csrf_exempt
 from models import User
 from accounts.forms import UserRegistrationForm, UserLoginForm
 
